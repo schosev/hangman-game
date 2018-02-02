@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hangman Game</title>
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        
+    </head>
+
+    <body>
+        <header class="head-box">
+            <div class="wrapper">
+                <h1 class="title">HANGMAN</h1>
+                <h3 class="subtile">National Parks</h3>
+            </div>
+
+        </header>
+
+        <div class="container" class="clearfix">
+            <section class="main">
+                <img id="park-image" src="assets/images/Arches-National-Park.jpg" alt="national park picture" />
+            </section>
+            <section class="main">
+                <section class="main-text">
+                    <p>Press any key to get started!</p>
+                    <p>Wins</p>
+                    <p>Current Word</p>
+                    <p id="parkName"></p>
+                    <p>Number of guesses remaining</p>
+                    <p id="guess-remain"></p>
+                    <p>Letters already guessed</p>
+                    <p id="letters-guessed"></p>
+                </section>
+            </section>
+
+        <script type="text/javascript" src="assets/javascript/game.js"></script>
+    </body>
+</html>
