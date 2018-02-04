@@ -26,7 +26,7 @@ var guessesRemain = 10;
     }
 
     //writes the 3 variables to the html, resets all of them when a new game is started.
-    document.getElementById("parkName").innerHTML = parkPuzzleArray.join("");
+    document.getElementById("name-of-park").innerHTML = parkPuzzleArray.join("");
     document.getElementById("guess-remain").innerHTML = guessesRemain;
     document.getElementById("letters-guessed").innerHTML = letterGuessed;
 
@@ -121,7 +121,7 @@ var guessesRemain = 10;
                 for (var z=0; z<letterMatchResult.length; z++) {
                     parkPuzzleArray.splice(letterMatchResult[z], 1, userGuess);
                 }
-                document.getElementById("parkName").innerHTML = parkPuzzleArray.join("");            
+                document.getElementById("name-of-park").innerHTML = parkPuzzleArray.join("");            
             }
 
             //decrement the guesses remaining if letter does not match and write that to the html.
