@@ -85,3 +85,8 @@ body {
     margin-bottom: 20px;
     font-size: 20px;
 }
+
+#win-loss {
+  font-size: 20px;
+  color: #ff0000;
+}

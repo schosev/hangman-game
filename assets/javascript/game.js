@@ -10,6 +10,7 @@ var guessesRemain = 10;
     // Randomly chooses a choice from the nationalParks array. This is the selected park.
     var parkSelection = nationalParks[Math.floor(Math.random() * nationalParks.length)];
     console.log("parkSelection: " + parkSelection);
+    //changeImage(nationalParks, parkSelection);
 
     
     //break the park name into an array with "_" or " " for each character.
@@ -29,6 +30,43 @@ var guessesRemain = 10;
     document.getElementById("name-of-park").innerHTML = parkPuzzleArray.join("");
     document.getElementById("guess-remain").innerHTML = guessesRemain;
     document.getElementById("letters-guessed").innerHTML = letterGuessed;
+
+    //new code to change image
+    function changeImage (npArray, parkSelected) {
+      console.log("npArray: " + npArray);
+      console.log("parkSelected: " + parkSelected);
+      var parkIndex = npArray.findIndex(park => park === parkSelected);
+      console.log(parkIndex);
+      if (parkIndex === 0) {
+          document.getElementById("park-image").src="assets/images/Arches-National-Park.jpg";
+      }
+      else if (parkIndex === 1) {
+          document.getElementById("park-image").src="assets/images/Big-Bend-National-Park.jpg";
+      }
+      else if (parkIndex === 2) {
+          document.getElementById("park-image").src="assets/images/Denali-National-Park.jpg";
+      }
+      else if (parkIndex === 3) {
+          document.getElementById("park-image").src="assets/images/Glacier-National-Park.jpg";
+      }
+      else if (parkIndex === 4) {
+          document.getElementById("park-image").src="assets/images/Grand-Canyon-National-Park.jpg";
+      }
+      else if (parkIndex === 5) {
+          document.getElementById("park-image").src="assets/images/Grand-Teton-National-Park.jpg";
+      }
+      else if (parkIndex === 6) {
+          document.getElementById("park-image").src="assets/images/Great-Smoky-Mountains.jpg";
+      }
+      else if (parkIndex === 7) {
+          document.getElementById("park-image").src="assets/images/Yellowstone-National-Park.jpg";
+      }
+      else if (parkIndex === 8) {
+          document.getElementById("park-image").src="assets/images/Yosemite-National-Park.jpg";
+      }
+  }
+
+  changeImage(nationalParks, parkSelection);
 
     //Capture the letter pressed by the user.
         document.onkeypress = function(event) {
@@ -61,48 +99,40 @@ var guessesRemain = 10;
             }
 
             //function to change image after win
-            function changeImage (npArray, parkSelected) {
+            function displayName (npArray, parkSelected) {
                 console.log("npArray: " + npArray);
                 console.log("parkSelected: " + parkSelected);
                 var parkIndex = npArray.findIndex(park => park === parkSelected);
                 console.log(parkIndex);
                 if (parkIndex === 0) {
                     document.getElementById("park-name").innerHTML="Arches National Park";
-                    document.getElementById("park-image").src="assets/images/Arches-National-Park.jpg";
                 }
                 else if (parkIndex === 1) {
                     document.getElementById("park-name").innerHTML="Big Bend National Park";
-                    document.getElementById("park-image").src="assets/images/Big-Bend-National-Park.jpg";
                 }
                 else if (parkIndex === 2) {
                     document.getElementById("park-name").innerHTML="Denali National Park";
-                    document.getElementById("park-image").src="assets/images/Denali-National-Park.jpg";
                 }
                 else if (parkIndex === 3) {
                     document.getElementById("park-name").innerHTML="Glacier National Park";
-                    document.getElementById("park-image").src="assets/images/Glacier-National-Park.jpg";
                 }
                 else if (parkIndex === 4) {
                     document.getElementById("park-name").innerHTML="Grand Canyon National Park";
-                    document.getElementById("park-image").src="assets/images/Grand-Canyon-National-Park.jpg";
                 }
                 else if (parkIndex === 5) {
                     document.getElementById("park-name").innerHTML="Grand Teton National Park";
-                    document.getElementById("park-image").src="assets/images/Grand-Teton-National-Park.jpg";
                 }
                 else if (parkIndex === 6) {
                     document.getElementById("park-name").innerHTML="Great Smoky Mountain National Park";
-                    document.getElementById("park-image").src="assets/images/Great-Smoky-Mountains.jpg";
                 }
                 else if (parkIndex === 7) {
                     document.getElementById("park-name").innerHTML="Yellowstone National Park";
-                    document.getElementById("park-image").src="assets/images/Yellowstone-National-Park.jpg";
                 }
                 else if (parkIndex === 8) {
                     document.getElementById("park-name").innerHTML="Yosemite National Park";
-                    document.getElementById("park-image").src="assets/images/Yosemite-National-Park.jpg";
                 }
             }
+
         
             //checking to see if the letter has already been guessed before.  If not write out the letter to the 
             //letters guessed
@@ -132,7 +162,15 @@ var guessesRemain = 10;
 
             //logic to see if there are no remaining guesses and if so start a new game
             if (guessesRemain <= 0) {
-                startGame();
+                document.getElementById("press-key").innerHTML = "Press any key to play again!";
+                document.getElementById("win-loss").innerHTML = "LOSER!!";
+                displayName(nationalParks, parkSelection);
+                document.onkeypress = function reset() {
+                  document.getElementById("park-name").innerHTML="";
+                  document.getElementById("press-key").innerHTML = "";
+                  document.getElementById("win-loss").innerHTML = "";
+                  startGame();
+                };
             }
 
             //logic to see if the puzzle is solved and if so add to wins, chnage image & start new game
@@ -141,8 +179,15 @@ var guessesRemain = 10;
             if (parkNameStrg === parkPuzzleStrg){
                 wins++;
                 document.getElementById("nbr-wins").innerHTML = wins;
-                changeImage(nationalParks, parkSelection);
-                startGame();
+                document.getElementById("press-key").innerHTML = "Press any key to play again!";
+                document.getElementById("win-loss").innerHTML = "WINNER!!";
+                displayName(nationalParks, parkSelection);
+                document.onkeypress = function restart() {
+                  document.getElementById("park-name").innerHTML="";
+                  document.getElementById("press-key").innerHTML = "";
+                  document.getElementById("win-loss").innerHTML = "";
+                  startGame();
+                };
             };
 
         }
