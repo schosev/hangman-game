@@ -53,7 +53,7 @@ var guessesRemain = 10;
           document.getElementById("park-image").src="assets/images/Grand-Canyon-National-Park.jpg";
       }
       else if (parkIndex === 5) {
-          document.getElementById("park-image").src="assets/images/Grand-Teton-National-Park.jpg";
+          document.getElementById("park-image").src="assets/images/Grand-Teton-National-Park.JPG";
       }
       else if (parkIndex === 6) {
           document.getElementById("park-image").src="assets/images/Great-Smoky-Mountains.jpg";
